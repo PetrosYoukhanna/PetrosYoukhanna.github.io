@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+    <div id="playArea">
+      <h1>Tic Tac Toe!!</h1>
+      <div class="group">
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+      </div>
+
+      <div class="group">
+        <div id="box4"></div>
+        <div id="box5"></div>
+        <div id="box6"></div>
+      </div>
+
+      <div class="group">
+        <div id="box7"></div>
+        <div id="box8"></div>
+        <div id="box9"></div>
+      </div>
+      <div id="winMsg"><button>New Game</button></div>
+    </div>
+
+    <script>
+    var turn = true;  //keep track of the turns
+    var gameOver = false; //indicates if the game is over
+
+    //get all the boxes
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    var box3 = document.getElementById("box3");
+    var box4 = document.getElementById("box4");
+    var box5 = document.getElementById("box5");
+    var box6 = document.getElementById("box6");
+    var box7 = document.getElementById("box7");
+    var box8 = document.getElementById("box8");
+    var box9 = document.getElementById("box9");
+    var win1Msg = "<p>Player 1 Wins!!</p> <br><button onclick='newGame()'>New Game</button>"; //player 1 win message box
+    var win2Msg = "<p>Player 2 Wins!!</p> <br><button onclick='newGame()'>New Game</button>"; //player 2 win message box
+
+    $(document).ready(function(){
+      //check if any of the boxes are clicked
+      $("div.group div").click(function() {
+        //if the clicked box is empty, then draw either an X or O depending on whose turn it is
+        if ($(this).is(":empty"))
+        {
+          if (gameOver != true)
+          {
+          if (turn)
+          {
+            $(this).html("X");
+            turn = false;
+          }
+          else
+          {
+            $(this).html("O");
+            turn = true;
+          }
+          //for diagonal wins (Player 1 or X)
+          if (box3.innerHTML == "X" && box5.innerHTML == "X" && box7.innerHTML == "X")
+          {
+            $("div#winMsg").css({display: "block"}).html(win1Msg);
+            gameOver = true;
+            turn = true;
+          }
+          if (box1.innerHTML == "X" && box5.innerHTML == "X" && box9.innerHTML == "X")
+          {
+            $("div#winMsg").css({display: "block"}).html(win1Msg);
+            gameOver = true;
+            turn = true;
+          }
+          //for horizontal wins (Player 1 or X)
+          if (box1.innerHTML == "X" && box2.innerHTML == "X" && box3.innerHTML == "X")
+          {
+            $("div#winMsg").css({display: "block"}).html(win1Msg);
+            gameOver = true;
+            turn = true;
+          }
+          if (box4.innerHTML == "X" && box5.innerHTML == "X" && box6.innerHTML == "X")
+          {
+            $("div#winMsg").css({display: "block"}).html(win1Msg);
+            gameOver = true;
+            turn = true;
+          }
+          if (box7.innerHTML == "X" && box8.innerHTML == "X" && box9.innerHTML == "X")
+          {
+            $("div#winMsg").css({display: "block"}).html(win1Msg);
+            gameOver = true;
+            turn = true;
+          }
+          //for vertical wins (Player 1 or X)
+          if (box1.innerHTML == "X" && box4.innerHTML == "X" && box7.innerHTML == "X")
+          {
+            $("div#winMsg").css({display: "block"}).html(win1Msg);
+            gameOver = true;
+            turn = true;
+          }
+          if (box2.innerHTML == "X" && box5.innerHTML == "X" && box8.innerHTML == "X")
+          {
+            $("div#winMsg").css({display: "block"}).html(win1Msg)
+            gameOver = true;
+            turn = true;
+          }
+          if (box3.innerHTML == "X" && box6.innerHTML == "X" && box9.innerHTML == "X")
+          {
+            $("div#winMsg").css({display: "block"}).html(win1Msg);
+            gameOver = true;
+            turn = true;
+          }
+          //for diagonal wins (Player 2 or O)
+          if (box3.innerHTML == "O" && box5.innerHTML == "O" && box7.innerHTML == "O")
+          {
+            $("div#winMsg").css({display: "block"}).html(win2Msg);
+            gameOver = true;
+            turn = true;
+          }
+          if (box1.innerHTML == "O" && box5.innerHTML == "O" && box9.innerHTML == "O")
+          {
+            $("div#winMsg").css({display: "block"}).html(win2Msg);
+            gameOver = true;
+            turn = true;
+          }
+          //for horizontal wins (Player 2 or O)
+          if (box1.innerHTML == "O" && box2.innerHTML == "O" && box3.innerHTML == "O")
+          {
+            $("div#winMsg").css({display: "block"}).html(win2Msg)
+            gameOver = true;
+            turn = true;
+          }
+          if (box4.innerHTML == "O" && box5.innerHTML == "O" && box6.innerHTML == "O")
+          {
+            $("div#winMsg").css({display: "block"}).html(win2Msg);
+            gameOver = true;
+            turn = true;
+          }
+          if (box7.innerHTML == "O" && box8.innerHTML == "O" && box9.innerHTML == "O")
+          {
+            $("div#winMsg").css({display: "block"}).html(win2Msg);
+            gameOver = true;
+            turn = true;
+          }
+          //for vertical wins (Player 2 or O)
+          if (box1.innerHTML == "O" && box4.innerHTML == "O" && box7.innerHTML == "O")
+          {
+            $("div#winMsg").css({display: "block"}).html(win2Msg);
+            gameOver = true;
+            turn = true;
+          }
+          if (box2.innerHTML == "O" && box5.innerHTML == "O" && box8.innerHTML == "O")
+          {
+            $("div#winMsg").css({display: "block"}).html(win2Msg);
+            gameOver = true;
+            turn = true;
+          }
+          if (box3.innerHTML == "O" && box6.innerHTML == "O" && box9.innerHTML == "O")
+          {
+            $("div#winMsg").css({display: "block"}).html(win2Msg);
+            gameOver = true;
+            turn = true;
+          }
+        }
+      }
+      });
+    });
+
+    //start a new game
+    function newGame()
+    {
+      gameOver = false;
+      $("div.group div").html("");
+      $("div#winMsg").css({display: "none"});
+    }
+    </script>
+
+  </body>
+</html>
