@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div id="container">
+    <header id="theheader">
+      <h1>Tip Calculator</h1>
+    </header>
+
+    <form action="index.html" name="form1" method="get" onsubmit="return false;">
+      <label for="billamount">Please enter your total bill:</label>
+
+      <div>
+        <label>$</label>
+        <input type="text" name="billamount" placeholder="Bill Amount" style="margin-top: 2%; margin-bottom: 2%;"/>
+      </div>
+
+      <label for="service">How good was our service?</label>
+      <div style="margin-bottom: 2%;">
+        <select name="service">
+          <option value="choose">Choose an Option</option>
+          <option value="ninty">90% Good</option>
+          <option value="eighty">80% Good</option>
+          <option value="seventy">70% Good</option>
+          <option value="sixty">60% Good</option>
+          <option value="fifty">50% Good</option>
+          <option value="fourty">40% Good</option>
+          <option value="thirty">30% Good</option>
+          <option value="twenty">20% Good</option>
+          <option value="ten">10% Good</option>
+          <option value="five">5% Good</option>
+            <option value="one">1% Good</option>
+
+        </select>
+      </div>
+
+      <label for="sharing">How many people are paying the bill together?</label>
+      <div>
+        <input type="text" name="sharing" placeholder="Number of people sharing" style="margin-top: 0.5%;"/>
+      </div>
+      <br/>
+      <input type="submit" onclick="calculateTip()" value="Calculate Tip"/>
+
+      <div id="result" style="font-size: 35px; margin-top: 6%; text-align: center;">  </div>
+
+    </form>
+
+</div>
+    <script type="text/javascript">
+      var billamount = document.forms["form1"]["billamount"];
+      billamount.focus();
+
+      function calculateTip() {
+        var service = document.forms["form1"]["service"].value;
+        var sharing = document.forms["form1"]["sharing"];
+        var theresult = document.getElementById("result");
+        var result = 0;
+
+        //validate the bill amount
+        if (billamount.value == "") {
+          theresult.innerHTML = "Please enter a value for bill amount";
+          billamount.focus();
+          return;
+        }
+
+        if (isNaN(billamount.value)) {
+          theresult.innerHTML = "Please enter a valid number for bill amount";
+          billamount.focus();
+          return;
+        }
+
+        if (service == "choose") {
+          theresult.innerHTML = "Please choose a service rating";
+          document.forms["form1"]["service"].focus();
+          return;
+        }
+
+        if (sharing.value == "") {
+          theresult.innerHTML = "Please enter the number of people sharing the bill";
+          document.forms["form1"]["sharing"].focus();
+          return;
+        }
+
+        if (isNaN(sharing.value)) {
+          theresult.innerHTML = "Please enter a valid number for the number of people sharing the bill";
+          document["form1"]["sharing"].focus();
+          return;
+        }
+
+
+        //check which option is picked for the service and then calculate based on the bill amount
+        if (service == "ninty") {
+          result = parseFloat(billamount.value) * 0.90;
+        }
+        if (service == "eighty") {
+          result = parseFloat(billamount.value) * 0.80;
+        }
+        if (service == "seventy") {
+          result = parseFloat(billamount.value) * 0.70;
+        }
+        if (service == "sixty") {
+          result = parseFloat(billamount.value) * 0.60;
+        }
+        if (service == "fifty") {
+          result = parseFloat(billamount.value) * 0.50;
+        }
+        if (service == "fourty") {
+          result = parseFloat(billamount.value) * 0.40;
+        }
+        if (service == "thirty") {
+          result = parseFloat(billamount.value) * 0.30;
+        }
+        if (service == "twenty") {
+          result = parseFloat(billamount.value) * 0.20;
+        }
+        if (service == "ten") {
+          result = parseFloat(billamount.value) * 0.10;
+        }
+        if (service == "five") {
+          result = parseFloat(billamount.value) * 0.05;
+        }
+
+        if (service == "one") {
+          result = parseFloat(billamount.value) * 0.01;
+        }
+
+        result = (result / parseInt(sharing.value)).toFixed(2); //split up the bill between the total number of people sharing it
+
+
+        if (parseInt(sharing.value) > 1)
+          theresult.innerHTML = "Tip amount: $" + result + " each";
+        else
+          theresult.innerHTML = "Tip amount: $" + result;
+      }
+    </script>
+  </body>
+</html>

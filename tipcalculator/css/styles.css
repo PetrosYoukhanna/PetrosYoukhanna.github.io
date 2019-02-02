@@ -1,0 +1,27 @@
+body
+{
+  font-size: 150%;
+  background-color: teal;
+}
+
+input, select
+{
+  font-size: 130%;
+}
+header#theheader
+{
+  border-bottom: 6px ridge orange;
+  text-align: center;
+}
+
+form
+{
+  padding-top: 2%;
+
+}
+@media only screen and (max-width: 500px) {
+/* For mobile phones: */
+input, select {
+width: 100%;
+}
+}
