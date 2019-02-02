@@ -6,6 +6,9 @@
   </head>
   <body onload="generate()">
     <h1>Guessing game!!</h1>
+    <nav>
+      <a href="../stickmanplatformerdemo/">Stickman Platformer Demo</a>
+    </nav>
     <h2 id="guessRange">Guess my number from 1 - 10</h2>
     <form name="myForm" onsubmit="return false;">
       <input type="text" name="answer" />
@@ -19,7 +22,7 @@
       <input type="submit" onclick="check()" value="Check answer">
       <span id="checkSpan"></span>
     </form>
-
+ 
     <script type="text/javascript">
       var computerNumber; //stores the random generated number
 
