@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Drawing App 1</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Back to home</a>
+    </nav>
+    <hr>
+    <form name="myForm" onsubmit="return false;">
+      X Position: <input type="text" name="positionX"/>
+      Y Position: <input type="text" name="positionY"/>
+      Width: <input type="text" name="width"/>
+      Height: <input type="text" name="height"/>
+
+      Color: <input type="color" name="color"/>
+      <input type="submit" onclick="draw()" value="Draw Me!!"/>
+    </form>
+    <p id="errorMsg"></p>
+    <br/>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+
+    <script type="text/javascript">
+    var myCanvas = document.getElementById("myCanvas"); //get canvas
+    var context = myCanvas.getContext("2d");  //get drawing surface of the canvas
+
+
+
+    function draw() {
+      //get x, y, width and height values
+      var positionX = document.forms["myForm"]["positionX"].value;
+      var positionY = document.forms["myForm"]["positionY"].value;
+      var width = document.forms["myForm"]["width"].value;
+      var height = document.forms["myForm"]["height"].value;
+      var color = document.forms["myForm"]["color"].value;
+      var errorMsg = document.getElementById("errorMsg");
+
+      //set the fillstyle of the canvas
+      context.fillStyle = color;
+
+      //validate the data
+      if (isNaN(positionX) || positionX == "") {
+        errorMsg.innerHTML = "Invalid x position!!";
+        document.forms["myForm"]["positionX"].focus();
+        return;
+      }
+      else if (isNaN(positionY) || positionY == "") {
+        errorMsg.innerHTML = "Invalid y position!!";
+        document.forms["myForm"]["positionY"].focus();
+        return;
+      }
+      else if (isNaN(width) || width == "") {
+        errorMsg.innerHTML = "Invalid width!!";
+        document.forms["myForm"]["width"].focus();
+        return;
+      }
+      else if (isNaN(height) || height == "") {
+        errorMsg.innerHTML = "Invalid height!!";
+        document.forms["myForm"]["height"].focus();
+        return;
+      }
+      //draw the square or rectangle
+      else {
+        errorMsg.innerHTML = "";
+        context.fillRect(positionX, positionY, width, height);
+        document.forms["myForm"].reset();
+      }
+
+
+
+    }
+    </script>
+  </body>
+</html>
