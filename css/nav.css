@@ -2,5 +2,9 @@ nav#projectNavigation a
 {
   border: 2px solid orange;
   padding: 10px;
-  margin-top: 10px;
+}
+
+nav#projectNavigation
+{
+ margin-top: 10px; 
 }
