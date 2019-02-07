@@ -5,21 +5,33 @@
     <title>Project Links</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <style>
+      body
+      {
+        background-color: black;
+      }
       nav a
       {
-        display: block;
+        text-align: center;
       }
+
+      @media only screen and (max-width: 500px) {
+  nav.row a {
+    font-size: 1.8em;
+  }
+
+
+}
     </style>
   </head>
   <body>
-    <h1>Project Links</h1>
-    <nav>
-      <a href="stickmanplatformerdemo/index.html">Stickman Platformer Demo</a>
-      <a href="todolist/index.html">To-do List</a>
-      <a href="tictactoe/index.html">Tic Tac Toe</a>
-      <a href="tipcalculator/index.html">Tip Calculator</a>
-      <a href="drawingwebsite/index.html">Drawing Website</a>
-      <a href="guess/index.html">Number Guessing Game</a>
+    <h1 style="text-align: center; color: white;">Project Links</h1>
+    <nav class="row">
+      <a href="stickmanplatformerdemo/index.html" class="col-md-2 col-xs-12 btn btn-primary">Stickman Platformer Demo</a>
+      <a href="todolist/index.html" class="col-md-2 col-xs-12 btn btn-primary">To-do List</a>
+      <a href="tictactoe/index.html" class="col-md-2 col-xs-12 btn btn-primary">Tic Tac Toe</a>
+      <a href="tipcalculator/index.html" class="col-md-2 col-xs-12 btn btn-primary">Tip Calculator</a>
+      <a href="drawingwebsite/index.html" class="col-md-2 col-xs-12 btn btn-primary">Drawing Website</a>
+      <a href="guess/index.html" class="col-md-2 col-xs-12 btn btn-primary">Number Guessing Game</a>
     </nav>
   </body>
 </html>
