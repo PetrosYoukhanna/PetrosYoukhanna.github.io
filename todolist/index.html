@@ -7,6 +7,7 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
      <link rel="stylesheet" href="css/styles.css">
+     <link rel="stylesheet" type="text/css" href="../css/nav.css"/>
   </head>
   <body>
     <div id="container">
@@ -17,7 +18,7 @@
 
 
       Task name: <input type="text" name="taskname" />
-      Task note: <input type="text" name="tasknote" />
+      Task note: <textarea name="tasknote" style="display: block;"></textarea>
 
         <input type="submit" value="Add to List" onclick="addToList()"><br>
         <span id="errorMsg" style="font-size: 1.1em;"></span>
@@ -27,61 +28,52 @@
 </div>
 
     <script type="text/javascript">
-
+    document.forms["form1"]["taskname"].focus();
     //deletes a task when the X button is clicked
     function done(button) {
       var elements = button.parentElement.children;
       localStorage.removeItem(elements[0].innerHTML);
       button.parentElement.remove();
     }
-
     //check if there is any tasks stored in the local storage before displaying them
     if (localStorage.length > 0) {
-
     for (var i = 0; i < localStorage.length; i++) {
-      document.getElementById("result").innerHTML += "<div style='width: 95%;'><h2 style='display: inline;'>" + localStorage.key(i) + "</h2><button onclick='done(this)' class='done btn btn-danger' style='float: right; font-size: 150%;'>X</button><p>" + localStorage.getItem(localStorage.key(i)) + "</p></div>";
+      document.getElementById("result").innerHTML += "<div style='width: 95%;'><h2 style='display: inline;'>" + localStorage.key(i) + "</h2><button onclick='done(this)' class='done btn btn-danger' style='float: right; font-size: 150%;'>X</button><p class='taskPara'>" + localStorage.getItem(localStorage.key(i)) + "</p></div>";
     }
-
 }
-
       //adds tasks to the list
       function addToList() {
-
-
           var taskName = document.forms["form1"]["taskname"].value; //get task name
           var taskNote = document.forms["form1"]["tasknote"].value; //get task note
-
         //validate user input
-        if (taskName == null || taskName == "" || taskNote == null || taskNote == "") {
-          document.getElementById("errorMsg").innerHTML = "Invalid data, try again...";
-
-          //if taskname is empty, set focus to task name field
-          if (taskName == null || taskName == "") {
-            document.forms["form1"]["taskname"].focus();
-            return;
-          }
-          //if task note is empty, set focus to task note field
-          if (taskNote == null || taskNote == "") {
-            document.forms["form1"]["tasknote"].focus();
-          }
+        if (taskName == null || taskName == "") {
+          document.getElementById("errorMsg").innerHTML = "Please enter a name for the task";
+          document.forms["form1"]["taskname"].focus();
           return;
         }
-        else {
-          document.getElementById("errorMsg").innerHTML = "";
+        if (taskNote == null || taskNote == "") {
+          document.getElementById("errorMsg").innerHTML = "Please enter a message";
+          document.forms["form1"]["tasknote"].focus();
+          return;
         }
+        if (taskName.length < 4) {
+          document.getElementById("errorMsg").innerHTML = "Task name must be at least 4 characters long";
+          document.forms["form1"]["taskname"].focus();
+          return;
+        }
+        if (taskNote.length < 10) {
+          document.getElementById("errorMsg").innerHTML = "Task task note must be at least 10 characters long";
+          document.forms["form1"]["tasknote"].focus();
+          return;
+        }
+
+          document.getElementById("errorMsg").innerHTML = "";
 
         //save the task to the local storage of the web page
         localStorage.setItem(taskName, taskNote);
-
-
-
-        $("#result").append("<div style='width: 95%;'><h2 style='display: inline;'>" + taskName + "</h2><button onclick='done(this)' class='done btn btn-danger' style='float: right; font-size: 150%;'>X</button><p>" + taskNote + "</p></div>");
-
-
+        $("#result").append("<div style='width: 95%;'><h2 style='display: inline;'>" + taskName + "</h2><button onclick='done(this)' class='done btn btn-danger' style='float: right; font-size: 150%;'>X</button><p class='taskPara'>" + taskNote + "</p></div>");
         document.forms["form1"].reset();
-
         document.forms["form1"]["taskname"].focus();
-
       }
     </script>
     <noscript>
