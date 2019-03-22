@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+		Author: Petros Youkhanna
+		Student Number: 000751379
+		-->
+		<!-- 
+		I, Petros Youkhanna, student number 000751379, 
+		certify that all code submitted is my own work; 
+		that I have not copied it from any other source. 
+		I also certify that I have not allowed my work to be copied by others.
+		-->
+		<title>Cycling Tours</title>
+		<meta charset = "utf-8" />
+		<link rel = "stylesheet" type = "text/css" href = "cyclestyles.css" />
+		
+		<style>
+			h1
+			{
+				padding-left: 10%;
+			}
+			table
+			{
+				margin-left: 10%;
+			}
+			table caption
+			{
+				text-align: left;
+				
+			}
+		
+			.dust
+			{
+				background-image: url('images/dust.jpg');
+				
+			}
+			#mainT
+			{
+				border-collapse: collapse;
+			}
+			
+			.repair
+			{
+				background-color: aqua;
+				vertical-align: top;
+			}
+			
+			.destinations
+			{
+				background-color: #ffe87c;
+			}
+			
+			.packing
+			{
+				background-color: violet;
+				vertical-align: top;
+			}
+			
+			.travel
+			{
+				background-color: coral;
+				vertical-align: top;
+			}
+			
+			.packPadding
+			{
+			
+				padding-right: 20px;
+			}
+			
+	
+			thead th
+			{
+				background-color: gray;
+				height: 50px;
+				color: white;
+				
+				border: 1px solid gray;
+			}
+			
+			.center
+			{
+				text-align: center;
+				margin-bottom: ;
+			}
+			
+			#row1
+			{
+				height: 50px;
+			}
+			#row2
+			{
+				height: 50px;
+				
+			}
+			
+			#legend td.repair
+			{
+				background-color: aqua;
+				width: 10px;
+			}
+			#legend td.destinations
+			{
+				background-color: #ffe87c;
+				width: 10px;
+			}
+			#legend td.packing
+			{
+				background-color: violet;
+				width: 10px;
+			}
+			#legend td.travel
+			{
+				background-color: coral;
+				width: 10px;
+			}
+			
+			.blank
+			{
+				height: 50px;
+			}
+			.ddeeff
+			{
+				background-color: #ddeeff;
+			}
+			
+			#mainT caption
+			{
+				caption-side: bottom;
+				text-align: right;
+			}
+			
+			#myBorder
+			{
+				margin-top: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<section id = "main">
+
+			<section id = "navAndBanner">
+
+				<nav id = "navigation">
+				<a href = "aboutus.html">About Us</a>
+				<a href = "#">Ask Us</a>
+				<a href = "#">Destinations</a>
+				<a href = "#">FAQ</a>
+				<a href = "reviews.html">Reviews</a>
+				<a href = "#">Seminars</a>
+				<a href = "#">Trip Prep</a>
+				</nav>
+				<section>
+					<img id = "bibanner" src = "images/bicyclebanner.jpg" alt = "bicycle banner" />
+					<section id = "TextWrap">
+						<a href = "#"><strong>Cycling Tours</strong></a>
+					</section>
+				</section>
+				<h1>Seminars</h1>
+				<table id = "legend">
+					<caption>Legend:</caption>
+					<tr>
+						<td class = "repair"></td>
+						<td>Bicycle Repair</td>
+						<td class = "destinations"></td>
+						<td>Destinations</td>
+						<td class = "packing"></td>
+						<td>Packing</td>
+						<td class = "travel"></td>
+						<td>Travel Documents</td>
+					</tr>
+				</table>
+				
+				<table id = "mainT" border = "2">
+					<caption>
+						Schedule is subject to change
+					</caption>
+					<colgroup>
+						<col class = "center ddeeff">
+					</colgroup>
+					
+					<thead>
+						<tr>
+							<th>Time</th>
+							<th>Monday</th>
+							<th>Tuesday</th>
+							<th>Wednesday</th>
+							<th>Thursday</th>
+							<th>Friday</th>
+							<th>Saturday</th>
+							<th>Sunday</th>
+						</tr>
+					</thead>
+					
+					
+					
+					<tbody>
+						<tr id = "row1">
+							<th>9:00 am</th>
+							<th colspan = "7" class = "dust">Reserved for groups</th>
+						</tr>
+						
+						<tr id = "row2">
+							<th>10:00 am</th>
+							<td colspan = "4" class = "repair">Bicycle Repair</td>
+							<td class = "packing">Packing</td>
+							<td></td>
+							<td class = "travel">Travel Documents</td>
+						</tr>
+						
+						<tr>
+							<th>11:00 am</th>
+							<td class = "blank"></td>
+							<td rowspan = "3" class = "destinations">Destinations Part 1</td>
+							<td class = "repair">Bicycle Repair</td>
+							<td rowspan = "2" class = "travel">Travel Documents for Asia</td>
+							<td></td>
+							<td class = "packing">Packing</td>
+							<td rowspan = "2" class = "destinations">Destinations Part 2</td>
+						</tr>
+						
+						<tr>
+							<th>12:00 pm</th>
+							<td class = "packing">Packing</td>
+							<td class = "blank"></td>
+							<td rowspan = "2" colspan = "2" class = "repair">Bicycle Repair for beginners</td>
+						
+						</tr>
+						
+						<tr>
+							<th>1:00 pm</th>
+							<td class = "blank"></td>
+							<td class = "packing">Packing</td>
+							<td class = "blank"></td>
+							<td class = "blank"></td>
+						
+						</tr>
+						
+						<tr>
+							<th>2:00 pm</th>
+							<td rowspan = "2" class = "travel">Travel Documents for Europe</td>
+							<td class = "blank"></td>
+							<td rowspan = "2" class = "repair">Bicycle Repair</td>
+							<td rowspan = "2" colspan = "2" class = "destinations">Destinations Part 1 and 2</td>
+							<td class = "blank"></td>
+							<td class = "packing">Packing</td>
+						</tr>
+						
+						<tr>
+							<th>3:00 pm</th>
+							<td class = "blank"></td>
+							<td class = "blank"></td>
+							<td class = "blank"></td>
+						</tr>
+						
+						<tr>
+							<th>4:00 pm - 7:00 pm</th>
+							<th colspan = "3" class = "dust" height = "60">No Seminars</th>
+							<td colspan = "4" class = "destinations">Destinations</td>
+						</tr>
+						
+						<tr>
+							<th>7:00 pm</th>
+							<td class = "blank"></td>
+							<td class = "travel">Travel Documents</td>
+							<td colspan = "2" class = "repair">Advanced Bicycle Repair</td>
+							<td class = "blank"></td>
+							<td class = "packing">Packing</td>
+							<td class = "blank"></td>
+						</tr>
+					</tbody>
+				</table>
+				<section id = "myBorder"></section>
+
+			</section>
+			
+			
+			<footer class = "myFooter">
+				<p><strong>Cycling Tours * P.O. Box 4455 * Brantford, ON * N3T 2J0</strong></p>
+			</footer>
+		</section>
+	</body>
+</html>
