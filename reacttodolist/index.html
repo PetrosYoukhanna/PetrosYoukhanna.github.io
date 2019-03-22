@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>React To-do List</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      class TodoListContainer extends React.Component {
+        constructor(props)
+        {
+          super(props);
+          this.state =
+          {
+            title: "To-do List",
+            input: "",
+            counter: 0,
+            tasks: []
+          }
+        }
+
+        newInput(event) {
+          this.setState({input: event.target.value})
+        }
+
+        inputStateChange(event) {
+          var temptasks = this.state.tasks;
+
+          temptasks.push({key: this.state.counter, name: this.state.input});
+          console.log(this.state.input);
+
+          this.setState({tasks: temptasks, counter: this.state.counter + 1});
+        }
+
+        render() {
+          return (
+            <div>
+              <TodoListPresentation
+                  apptitle={this.state.title}
+                  tasks={this.state.tasks}
+                  inputStateChange={this.inputStateChange.bind(this)}
+                  newInput={this.newInput.bind(this)} />
+            </div>
+          );
+        }
+      }
+
+      class TodoListPresentation extends React.Component {
+        renderTasks(item) {
+          return (
+            <li
+              key={item.key}>
+                {item.name}
+            </li>
+          );
+        }
+
+
+
+        render() {
+          return (
+            <div>
+              <h1>{this.props.apptitle}</h1>
+              <input type="text" id="task" onChange={this.props.newInput.bind(this)}/>
+              <button onClick={this.props.inputStateChange.bind(this)}>Add</button>
+
+              <ul>
+              {this.props.tasks.map(this.renderTasks.bind(this))}
+              </ul>
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(
+        <TodoListContainer />,
+        document.getElementById("container")
+      );
+    </script>
+  </body>
+</html>
