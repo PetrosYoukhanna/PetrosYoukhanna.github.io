@@ -22,20 +22,15 @@
             tasks: []
           }
         }
-
         newInput(event) {
           this.setState({input: event.target.value})
         }
-
         inputStateChange(event) {
           var temptasks = this.state.tasks;
-
           temptasks.push({key: this.state.counter, name: this.state.input});
-          console.log(this.state.input);
 
           this.setState({tasks: temptasks, counter: this.state.counter + 1});
         }
-
         render() {
           return (
             <div>
@@ -48,7 +43,6 @@
           );
         }
       }
-
       class TodoListPresentation extends React.Component {
         renderTasks(item) {
           return (
@@ -58,24 +52,24 @@
             </li>
           );
         }
-
-
-
         render() {
+          var listStyle = {
+            listStyleType: 'none',
+            paddingLeft: 0
+          };
+
           return (
             <div>
               <h1>{this.props.apptitle}</h1>
               <input type="text" id="task" onChange={this.props.newInput.bind(this)}/>
               <button onClick={this.props.inputStateChange.bind(this)}>Add</button>
-
-              <ul>
+              <ul style={listStyle}>
               {this.props.tasks.map(this.renderTasks.bind(this))}
               </ul>
             </div>
           )
         }
       }
-
       ReactDOM.render(
         <TodoListContainer />,
         document.getElementById("container")
